@@ -7,11 +7,11 @@ public class Student {
     private String firstName;
     private String lastName;
     private int gradeYear;
-    private int studentID;
+    private String studentID;
     private String courses;
-    private int tuitionBalance;
-    private int costOfCourse;
-
+    private int tuitionBalance = 0;
+    private int costOfCourse = 600;
+    private static int id = 1000;
 
     //Constructor: prompt user to enter a student's name and year
     public Student(){
@@ -25,11 +25,34 @@ public class Student {
         System.out.println("1 - Freshman \n2 - Sophomore \n3 - Junior \n4 - Senior \nEnter Student class level : ");
         this.gradeYear = in.nextInt();
 
-        System.out.println(firstName + " " + lastName + " - " +gradeYear);
+        setStudentID();
+
+        System.out.println(firstName + " " + lastName + " - " + gradeYear + " - " +studentID);
+
     }
+
     //Generate an ID
+    private void setStudentID() {
+        //Grade Level ID
+        id++;
+        this.studentID = gradeYear + "" + id;
+    }
 
     //Enroll in courses
+    public void enroll(){
+        //Get inside a loop, user hits 0
+        System.out.println("Enter the name of the course to enroll in (Q to quit)");
+        Scanner in = new Scanner(System.in);
+        String course = in.nextLine();
+
+        if (course != "Q"){
+            courses = course + "\n" + course;
+            tuitionBalance = tuitionBalance + costOfCourse;
+        }
+
+        System.out.println("ENROLLED IN: " + courses);
+        System.out.println("TUITION BALANCE: " + tuitionBalance);
+    }
 
     //View balance
 
